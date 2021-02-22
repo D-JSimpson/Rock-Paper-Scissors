@@ -1,0 +1,24 @@
+main{
+    display: flex;
+    flex-direction: column;
+    background-color: blue;
+    width: 500px;
+    height: 20vh;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+}
+div{
+    display: flex;
+    margin-top: 5%;
+}
+#number-of-games{
+    width: 70%;
+    height: 20%;
+    margin-top: 5%;
+}
+.player-choice{
+    width: 150px;
+    height: 75px;
+    margin: 2%;
+}

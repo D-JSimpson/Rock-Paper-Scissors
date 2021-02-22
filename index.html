@@ -3,84 +3,103 @@
 <head>
   <meta charset="utf-8">
   <title>Rock Papper Scissors</title>
+
+  <style>
+      @import 'style.css';
+  </style>
+
 </head>
+
 <body>
 
-  <script>
-   
-   function computerPlay(){
-       let ran = Math.floor(Math.random() * 3);
-       if(ran == 0){
-           return "rock";
-       }
-       else if(ran == 1){
-           return "papper";
-       }
-       else{
-           return "scissors";
-       }
-   }
-   
-   function playRound(playerSelection, computerSelection){
-            if(playerSelection.localeCompare('rock', undefined, { sensitivity: 'base' }) === 0){
-                playerSelection = 'rock';
-            }
-            else if(playerSelection.localeCompare('papper', undefined, { sensitivity: 'base' })=== 0){
-                playerSelection = 'papper';
-            }
-            else if(playerSelection.localeCompare('scissors', undefined, { sensitivity: 'base' })=== 0){
-                playerSelection = 'scissors';
-            }
-            else{
-                alert("Not A Valid Answer");
-                return "Not A Valid Answer";
-            }      
-            
-            if(playerSelection == computerSelection){
-                alert("Draw")
-                return "Draw";
-            }
+<main>
+<input id = "number-of-games"></input>
 
-            if(playerSelection == 'rock'){
-                if(computerSelection == 'scissors'){
-                    alert("You win!");
-                    return "You win!";
-                }
-                else{alert("You Lose!"); return "You Lose!";}
+<div>
+<button class = "player-choice">Rock</button>
+<button class = "player-choice">Paper</button>
+<button class = "player-choice">Scissors</button>
+</div>
 
-            }
-            else if(playerSelection == 'papper'){
-                if(computerSelection == 'rock'){
-                    alert("You win!");
-                    return "You win!";
-                }
-                else{alert("You Lose!"); return "You Lose!";}
+</main>
 
-            }
-            else{
-                if(computerSelection == 'papper'){
-                    alert("You win!");
-                    return "You win!";
-                }
-                else{alert("You Lose!"); return "You Lose!";}
-            }
-   }
-   
-   function game(rounds){
-       let winCtr = 0;
-        for(let i = rounds; i > 0; i--){
-            const playerSelection = window.prompt("Enter rock, papper, or scissors: ");
-            const computerSelection = computerPlay();
-            let winLose = playRound(playerSelection, computerSelection);
-            if(winLose === "You win!"){
-                winCtr++;
-            }
-        }
-        return winCtr;
-   }
-   let wins = game(parseInt(window.prompt("How Many Games Would You Like To Play?")));
-   console.log("You have won " + wins + " game(s)"); 
-
-  </script>
 </body>
+
+<script>
+   
+    function computerPlay(){
+        let ran = Math.floor(Math.random() * 3);
+        if(ran == 0){
+            return "rock";
+        }
+        else if(ran == 1){
+            return "papper";
+        }
+        else{
+            return "scissors";
+        }
+    }
+    
+    function playRound(playerSelection, computerSelection){
+             if(playerSelection.localeCompare('rock', undefined, { sensitivity: 'base' }) === 0){
+                 playerSelection = 'rock';
+             }
+             else if(playerSelection.localeCompare('papper', undefined, { sensitivity: 'base' })=== 0){
+                 playerSelection = 'papper';
+             }
+             else if(playerSelection.localeCompare('scissors', undefined, { sensitivity: 'base' })=== 0){
+                 playerSelection = 'scissors';
+             }
+             else{
+                 alert("Not A Valid Answer");
+                 return "Not A Valid Answer";
+             }      
+             
+             if(playerSelection == computerSelection){
+                 alert("Draw")
+                 return "Draw";
+             }
+ 
+             if(playerSelection == 'rock'){
+                 if(computerSelection == 'scissors'){
+                     alert("You win!");
+                     return "You win!";
+                 }
+                 else{alert("You Lose!"); return "You Lose!";}
+ 
+             }
+             else if(playerSelection == 'papper'){
+                 if(computerSelection == 'rock'){
+                     alert("You win!");
+                     return "You win!";
+                 }
+                 else{alert("You Lose!"); return "You Lose!";}
+ 
+             }
+             else{
+                 if(computerSelection == 'papper'){
+                     alert("You win!");
+                     return "You win!";
+                 }
+                 else{alert("You Lose!"); return "You Lose!";}
+             }
+    }
+    /*
+    function game(rounds){
+        let winCtr = 0;
+         for(let i = rounds; i > 0; i--){
+             const playerSelection = window.prompt("Enter rock, papper, or scissors: ");
+             const computerSelection = computerPlay();
+             let winLose = playRound(playerSelection, computerSelection);
+             if(winLose === "You win!"){
+                 winCtr++;
+             }
+         }
+         return winCtr;
+    }
+    let wins = game(parseInt(window.prompt("How Many Games Would You Like To Play?")));
+    console.log("You have won " + wins + " game(s)"); 
+ */
+   </script>
+
 </html>
