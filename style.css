@@ -22,3 +22,16 @@ div{
     height: 75px;
     margin: 2%;
 }
+.matchup{
+    width: 113px; 
+    text-align:center;
+}
+.button-click{
+    animation-name: click;
+    animation-duration: 0.5s;
+    box-sizing: border-box;
+}
+@keyframes click{
+    0%{background-color: gray;}
+    100%{background-color: gray; border: solid 1px black;}
+}
