@@ -36,6 +36,7 @@
    let winCtr = 0;
    let gameMode = false;
    let gameNumber = 0;
+   let gamesPlayed = 0;
 
 function clearGame(){
     let divNum = document.getElementsByTagName('div');
@@ -53,7 +54,7 @@ function manyRounds(player, computer){
         clearGame();
     gameMode = true;
     gameNumber = userInput;
-    if(document.getElementById('display-win') !== null){let elementD = document.querySelector('#display-win'); elementD.remove(); winCtr = 0;}
+    if(document.getElementById('display-win') !== null){let elementD = document.querySelector('#display-win'); elementD.remove(); winCtr = 0; gamesPlayed = 0;}
     }
     else{
         alert("Please enter a number value!");
@@ -153,10 +154,11 @@ function playGame(choice){
             winCtr++;
         }
         gameNumber--;
+        gamesPlayed++;
 
         if(document.getElementById('display-win') !== null){ let elementD = document.querySelector('#display-win'); elementD.remove()}
         const displayWin = document.createElement('p');
-        displayWin.innerText = "You have won " + winCtr + " out of " + document.getElementById('number-of-games').value + " games";
+        displayWin.innerText = "You have won " + winCtr + " out of " + gamesPlayed + " games";
         displayWin.id = 'display-win';
         main.appendChild(displayWin);
         
