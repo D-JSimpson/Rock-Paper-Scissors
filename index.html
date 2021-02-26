@@ -13,12 +13,16 @@
 <body>
 
 <main>
+<h1>First To ?:</h1>
+<section id = "input-section">
 <input id = "number-of-games"></input>
+<button id = "play-button" onclick= "manyRounds();">Play!</button>
+</section>
 
 <div>
-<button id = "Rock" class = "player-choice">Rock</button>
-<button id = "Papper" class = "player-choice">Paper</button>
-<button id = "Scissors" class = "player-choice">Scissors</button>
+<button id = "rock" class = "player-choice">Rock</button>
+<button id = "papper" class = "player-choice">Paper</button>
+<button id = "scissors" class = "player-choice">Scissors</button>
 </div>
 
 </main>
@@ -28,7 +32,38 @@
 <script>
    
    const main = document.querySelector('main');
-    
+
+   let winCtr = 0;
+   let gameMode = false;
+   let gameNumber = 0;
+
+function clearGame(){
+    let divNum = document.getElementsByTagName('div');
+        console.log(divNum.length);
+        if(divNum.length !== 1){
+            let elementR = document.querySelector('#result');
+            let elementM = document.querySelector('#matchUP');
+            elementR.remove();
+            elementM.remove();
+        }
+}
+
+function manyRounds(player, computer){
+    const userInput = document.getElementById('number-of-games').value;
+    if(userInput % 1 == 0){
+        clearGame();
+    gameMode = true;
+    gameNumber = userInput;
+    console.log(userInput);
+    if(document.getElementById('display-win') !== null){let elementD = document.querySelector('#display-win'); elementD.remove(); winCtr = 0;}
+    }
+    else{
+        alert("Please enter a number value!");
+    }
+}
+
+
+
     function buttonClick(el){
         el.classList.add('button-click');
         el.onanimationend = () =>{el.classList.remove('button-click')}
@@ -118,23 +153,46 @@
              }
     }
 
-    const rock = document.querySelector('#Rock');
-   const papper = document.querySelector('#Papper');
-   const scissors = document.querySelector('#Scissors');
+    const rock = document.querySelector('#rock');
+   const papper = document.querySelector('#papper');
+   const scissors = document.querySelector('#scissors');
 
-   rock.addEventListener('click', function(){
+function playGame(choice){
+    console.log(choice.id);
+        if(gameMode == true && gameNumber > 0){
+        let compSelect = computerPlay();
+        let winLose = playRound(choice.id, compSelect);
+        if(winLose === "You win!"){
+            winCtr++;
+        }
+        gameNumber--;
+
+        if(document.getElementById('display-win') !== null){ let elementD = document.querySelector('#display-win'); elementD.remove()}
+        const displayWin = document.createElement('p');
+        displayWin.innerText = "You have won " + winCtr + " games";
+        displayWin.id = 'display-win';
+        main.appendChild(displayWin);
+        
+        console.log(gameNumber);
+        console.log("its true")
+        console.log(winCtr);
+    }
+    else if(gameMode == true && gameNumber == 0){
+        let displayWin = document.querySelector('#display-win');
+        displayWin.innerText = 'Game Over! ' + displayWin.innerText;
+        gameMode = false;
+    }
+
+    else{
        let compSelect = computerPlay();
-       buttonClick(this);
-       playRound('rock', compSelect);
-   });
-   papper.addEventListener('click', function(){
-       let compSelect = computerPlay();
-       playRound('papper', compSelect);
-   });
-   scissors.addEventListener('click', function(){
-       let compSelect = computerPlay();
-       playRound('scissors', compSelect);
-   });
+       buttonClick(choice);
+       playRound(choice.id, compSelect);
+    }
+}
+
+   rock.addEventListener('click', function(){playGame(this)});
+   papper.addEventListener('click', function(){playGame(this)});
+   scissors.addEventListener('click', function(){playGame(this)});
 
 
     /*
